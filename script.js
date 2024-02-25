@@ -52,14 +52,30 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         alert('Invalid credentials. Please try again.');
     }
 });
+document.addEventListener("DOMContentLoaded", function() {
+    var loginButton = document.getElementById('loginButton');
+    var alertMessage = document.getElementById('alertMessage');
+    var isLoggedIn = false; // Flag to track successful login
 
-// Function to validate user credentials
-function validateCredentials(registrationNo, password) {
-    // Add your validation logic here
-    // For example, you might check against a database or hardcoded credentials
-    if (registrationNo === '3010010453' && password === 'Yaswanth2662@') {
-        return true; // Credentials are valid
-    } else {
-        return false; // Credentials are invalid
-    }
-}
+    loginButton.addEventListener('click', function() {
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+
+        // Check if the username and password are correct
+        if (username === '11' && password === '11') {
+            // Set the flag to true upon successful login
+            isLoggedIn = true;
+            alert('Login successful!');
+            setTimeout(function() {
+                // Check if the user is still logged in after 30 seconds
+                if (isLoggedIn) {
+                    alertMessage.classList.remove('hidden');
+                }
+            }, 30000); // Show after 30 seconds
+        } else {
+            alert('');
+        }
+    });
+});
+
+
